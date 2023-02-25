@@ -1,7 +1,13 @@
 
+
+/* global constants */
+
 const display = document.querySelector("#display");
 const displayValue = document.querySelector("#display").innerHTML;
 const numberButtons = document.querySelectorAll(".button_number");
+
+
+/* basic math functions and operate */
 
 function addNumbers(x, y) {
     z = parseInt(x) + parseInt(y);
@@ -35,8 +41,25 @@ function operate(operator, x, y) {
     }
 }
 
-numberButtons.forEach(function(button) {
-    button.onclick = function(e) {
-        console.log(this.value);
+/* import number input */
+
+
+
+numberButtons.forEach(function (button) {
+    button.onclick = function () {
+        display.innerHTML = this.value;
     }
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
