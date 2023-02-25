@@ -1,4 +1,7 @@
 
+const display = document.querySelector("#display");
+const displayValue = document.querySelector("#display").innerHTML;
+const numberButtons = document.querySelectorAll(".button_number");
 
 function addNumbers(x, y) {
     z = parseInt(x) + parseInt(y);
@@ -32,4 +35,8 @@ function operate(operator, x, y) {
     }
 }
 
-operate('/', 10, 5);
+numberButtons.forEach(function(button) {
+    button.onclick = function(e) {
+        console.log(this.value);
+    }
+})
