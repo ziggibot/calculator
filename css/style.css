@@ -1,0 +1,8 @@
+#display {
+    width: 10rem;
+    height: 5rem;
+    border: 0.2em black solid;
+    background-color: beige;
+    border-radius: 0.4em;
+    margin: 0.5em;
+}
