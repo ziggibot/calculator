@@ -5,8 +5,10 @@
 const display = document.querySelector("#display");
 const numberButtons = document.querySelectorAll(".button_number");
 const operatorButtons = document.querySelectorAll(".button_operator");
-const equalsButton = document.querySelector(".button_equals")
+const equalsButton = document.querySelector(".button_equals");
+const clearButton = document.querySelector(".button_clear");
 const numbersInput = [];
+
 
 
 /* global variables */
@@ -15,8 +17,6 @@ let displayNumber = "";
 let firstOperand = "";
 let secondOperand = "";
 let currentOperator = "";
-
-
 
 
 /* number input */
@@ -45,22 +45,22 @@ operatorButtons.forEach(function (button) {
 
 function addNumbers(x, y) {
     z = parseFloat(x) + parseFloat(y);
-    console.log(z);
+    display.innerHTML = z;
 }
 
 function substractNumbers(x, y) {
     z = parseFloat(x) - parseFloat(y);
-    console.log(z);
+    display.innerHTML = z;
 }
 
 function multiplyNumbers(x, y) {
     z = parseFloat(x) * parseFloat(y);
-    console.log(z);
+    display.innerHTML = z;
 }
 
 function divideNumbers(x, y) {
     z = parseFloat(x) / parseFloat(y);
-    console.log(z);
+    display.innerHTML = z;
 }
 
 function operate(currentOperator, firstOperand, secondOperand) {
@@ -76,13 +76,19 @@ function operate(currentOperator, firstOperand, secondOperand) {
 }
 
 
-/* function of equals button */
+/* function of equals and clear button */
 
 equalsButton.addEventListener('click', function() {
     secondOperand = parseFloat(display.innerHTML);
     operate(currentOperator, firstOperand, secondOperand);
 });
 
+clearButton.addEventListener('click', function() {
+    numbersInput.length = 0;
+    firstOperand = "";
+    secondOperand = "";
+    display.innerHTML = "";
+})
 
 
 
