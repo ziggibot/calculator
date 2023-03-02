@@ -4,7 +4,42 @@
 
 const display = document.querySelector("#display");
 const numberButtons = document.querySelectorAll(".button_number");
-const displayNumbers = [];
+const operatorButtons = document.querySelectorAll(".button_operator");
+const equalsButton = document.querySelector(".button_equals")
+const numbersInput = [];
+
+
+/* global variables */
+
+let displayNumber = "";
+let firstOperand = "";
+let secondOperand = "";
+let currentOperator = "";
+
+
+
+
+/* number input */
+
+numberButtons.forEach(function (button) {
+    button.onclick = function () {
+        numbersInput.push(this.value);
+        displayNumber = (parseFloat(numbersInput.join('')));
+        display.innerHTML = displayNumber;
+    }
+})
+
+
+/* operator input */
+
+operatorButtons.forEach(function (button) {
+    button.onclick = function () {
+        currentOperator = this.value;
+        firstOperand = parseFloat(display.innerHTML);
+        numbersInput.length = 0;
+    }
+})
+
 
 /* basic math functions and operate */
 
@@ -28,26 +63,34 @@ function divideNumbers(x, y) {
     console.log(z);
 }
 
-function operate(operator, x, y) {
-    if (operator === '+') {
-        z = addNumbers(x, y);
-    } else if (operator === '-') {
-        z = substractNumbers(x, y);
-    } else if (operator === '*') {
-        z = multiplyNumbers(x, y);
-    } else if (operator === '/') {
-        z = divideNumbers(x, y);
+function operate(currentOperator, firstOperand, secondOperand) {
+    if (currentOperator === '+') {
+        z = addNumbers(firstOperand, secondOperand);
+    } else if (currentOperator === '-') {
+        z = substractNumbers(firstOperand, secondOperand);
+    } else if (currentOperator === '*') {
+        z = multiplyNumbers(firstOperand, secondOperand);
+    } else if (currentOperator === '/') {
+        z = divideNumbers(firstOperand, secondOperand);
     }
 }
 
-/* import number input */
 
-numberButtons.forEach(function (button) {
-    button.onclick = function () {
-        displayNumbers.push(this.value);
-        console.log(parseFloat(displayNumbers.join('')));
-    }
-})
+/* function of equals button */
+
+equalsButton.addEventListener('click', function() {
+    secondOperand = parseFloat(display.innerHTML);
+    operate(currentOperator, firstOperand, secondOperand);
+});
+
+
+
+
+
+
+
+
+
 
 
 
