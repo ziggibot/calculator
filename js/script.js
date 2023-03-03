@@ -45,26 +45,29 @@ operatorButtons.forEach(function (button) {
 
 function addNumbers(x, y) {
     z = parseFloat(x) + parseFloat(y);
-    display.innerHTML = z;
+    display.innerHTML = Math.round(z * 100) / 100;
 }
 
 function substractNumbers(x, y) {
     z = parseFloat(x) - parseFloat(y);
-    display.innerHTML = z;
+    display.innerHTML = Math.round(z * 100) / 100;
 }
 
 function multiplyNumbers(x, y) {
     z = parseFloat(x) * parseFloat(y);
-    display.innerHTML = z;
+    display.innerHTML = Math.round(z * 100) / 100;
 }
 
 function divideNumbers(x, y) {
     z = parseFloat(x) / parseFloat(y);
-    display.innerHTML = z;
+    display.innerHTML = Math.round(z * 100) / 100;
 }
 
 function operate(currentOperator, firstOperand, secondOperand) {
-    if (currentOperator === '+') {
+    if ((currentOperator === '/') && (secondOperand === 0)) {
+        display.innerHTML = "u fool";
+    }
+    else if (currentOperator === '+') {
         z = addNumbers(firstOperand, secondOperand);
     } else if (currentOperator === '-') {
         z = substractNumbers(firstOperand, secondOperand);
@@ -81,6 +84,8 @@ function operate(currentOperator, firstOperand, secondOperand) {
 equalsButton.addEventListener('click', function() {
     secondOperand = parseFloat(display.innerHTML);
     operate(currentOperator, firstOperand, secondOperand);
+    firstOperand = "";
+    currentOperator = "";
 });
 
 clearButton.addEventListener('click', function() {
