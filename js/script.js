@@ -81,14 +81,16 @@ function operate(currentOperator, firstOperand, secondOperand) {
 
 /* function of equals and clear button */
 
-equalsButton.addEventListener('click', function() {
+equalsButton.addEventListener('click', function () {
     secondOperand = parseFloat(display.innerHTML);
     operate(currentOperator, firstOperand, secondOperand);
+    numbersInput.length = 0;
     firstOperand = "";
+    secondOperand = "";
     currentOperator = "";
 });
 
-clearButton.addEventListener('click', function() {
+clearButton.addEventListener('click', function () {
     numbersInput.length = 0;
     firstOperand = "";
     secondOperand = "";
